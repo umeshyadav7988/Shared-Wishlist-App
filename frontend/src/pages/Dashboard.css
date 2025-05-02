@@ -1,0 +1,60 @@
+.dashboard-container {
+    max-width: 600px;
+    margin: 40px auto;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #f4f4f4;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+  }
+  
+  .dashboard-container h2 {
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  
+  .input-group {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+  }
+  
+  .input-group input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+  }
+  
+  .input-group button {
+    padding: 10px 20px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .input-group button:hover {
+    background-color: #45a049;
+  }
+  
+  .wishlist-list {
+    list-style: none;
+    padding: 0;
+  }
+  
+  .wishlist-list li {
+    background-color: #ffffff;
+    margin-bottom: 10px;
+    padding: 12px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    border: 1px solid #ddd;
+  }
+  
+  .wishlist-list li:hover {
+    background-color: #e0f7fa;
+  }
+  

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import API from '../services/api';
 import { useNavigate } from 'react-router-dom';
+import './Dashboard.css';
 
 const Dashboard = () => {
   const [wishlists, setWishlists] = useState([]);
@@ -8,9 +9,15 @@ const Dashboard = () => {
   const navigate = useNavigate();
 
   const fetchWishlists = async () => {
-    const res = await API.get('/api/wishlists');
-    setWishlists(res.data);
+    try {
+      const user = JSON.parse(localStorage.getItem('user'));
+      const res = await API.get(`/api/wishlists/${user.email}`);
+      setWishlists(res.data);
+    } catch (err) {
+      console.error('Failed to fetch wishlists:', err.message);
+    }
   };
+  
 
   const createWishlist = async () => {
     const user = JSON.parse(localStorage.getItem('user'));

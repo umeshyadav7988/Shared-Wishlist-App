@@ -10,18 +10,26 @@ const WishlistPage = () => {
   const [image, setImage] = useState('');
 
   const fetchWishlist = async () => {
-    const res = await API.get(`/api/wishlists/${id}`);
+    const res = await API.get(`/api/wishlists/one/${id}`);
     setWishlist(res.data);
   };
+  
 
   const addProduct = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
-    await API.post(`/api/wishlists/${id}/products`, {
-      name, price, image, addedBy: user.email
+    await API.post(`/api/products`, {
+      wishlistId: id,
+      name,
+      price,
+      image,
+      addedBy: user.email
     });
-    setName(''); setPrice(''); setImage('');
+    setName('');
+    setPrice('');
+    setImage('');
     fetchWishlist();
   };
+  
 
   useEffect(() => { fetchWishlist(); }, [id]);
 
