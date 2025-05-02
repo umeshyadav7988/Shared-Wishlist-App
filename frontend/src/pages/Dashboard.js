@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import API from '../services/api';
 import { useNavigate } from 'react-router-dom';
-import './Dashboard.css';
 
 const Dashboard = () => {
   const [wishlists, setWishlists] = useState([]);
@@ -17,7 +16,6 @@ const Dashboard = () => {
       console.error('Failed to fetch wishlists:', err.message);
     }
   };
-  
 
   const createWishlist = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
@@ -28,14 +26,66 @@ const Dashboard = () => {
 
   useEffect(() => { fetchWishlists(); }, []);
 
+  const styles = {
+    container: {
+      maxWidth: '600px',
+      margin: '40px auto',
+      padding: '20px',
+      fontFamily: 'Arial, sans-serif',
+    },
+    heading: {
+      textAlign: 'center',
+      color: '#333',
+    },
+    input: {
+      width: 'calc(100% - 90px)',
+      padding: '10px',
+      marginRight: '10px',
+      marginBottom: '20px',
+      border: '1px solid #ccc',
+      borderRadius: '4px',
+    },
+    button: {
+      padding: '10px 20px',
+      backgroundColor: '#28a745',
+      color: '#fff',
+      border: 'none',
+      borderRadius: '4px',
+      cursor: 'pointer',
+    },
+    list: {
+      listStyleType: 'none',
+      padding: 0,
+    },
+    listItem: {
+      padding: '12px',
+      margin: '10px 0',
+      border: '1px solid #ddd',
+      borderRadius: '6px',
+      backgroundColor: '#f9f9f9',
+      cursor: 'pointer',
+    }
+  };
+
   return (
-    <div>
-      <h2>Dashboard</h2>
-      <input value={name} onChange={(e) => setName(e.target.value)} placeholder="New Wishlist Name" />
-      <button onClick={createWishlist}>Create</button>
-      <ul>
+    <div style={styles.container}>
+      <h2 style={styles.heading}>Dashboard</h2>
+      <div>
+        <input
+          style={styles.input}
+          value={name}
+          onChange={(e) => setName(e.target.value)}
+          placeholder="New Wishlist Name"
+        />
+        <button style={styles.button} onClick={createWishlist}>Create</button>
+      </div>
+      <ul style={styles.list}>
         {wishlists.map(w => (
-          <li key={w._id} onClick={() => navigate(`/wishlist/${w._id}`)}>
+          <li
+            key={w._id}
+            style={styles.listItem}
+            onClick={() => navigate(`/wishlist/${w._id}`)}
+          >
             {w.name} by {w.createdBy}
           </li>
         ))}
