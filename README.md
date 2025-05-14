@@ -1,6 +1,6 @@
 # 📝 Shared Wishlist App
 
-A real-time collaborative wishlist app where multiple users can create, manage, and interact with shared wishlists — perfect for group shopping plans, events, or gift planning.
+A real time collaborative wishlist app where multiple users can create, manage, and interact with shared wishlists perfect for group shopping plans, events, or gift planning.
 
 
 ## 📂 Repository
